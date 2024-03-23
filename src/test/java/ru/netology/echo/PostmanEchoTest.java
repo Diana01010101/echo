@@ -1,4 +1,4 @@
-import io.restassured.response.ValidatableResponse;
+package ru.netology.echo;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -11,12 +11,12 @@ class PostmanEchoTest {
         var text = "Hi";
         given()
                 .baseUri("https://postman-echo.com")
-                .body("some data")
+                .body("Hi")
                 .when()
                 .post("/post")
                 .then()
                 .statusCode(200)
-                .body("data", equalTo(text));
+                .body("data", equalTo("Hi"));
     }
 
 
