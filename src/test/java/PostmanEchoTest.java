@@ -1,3 +1,4 @@
+import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -10,13 +11,12 @@ class PostmanEchoTest {
         var text = "Hi";
         given()
                 .baseUri("https://postman-echo.com")
-                .body(text)
+                .body("some data")
                 .when()
                 .post("/post")
                 .then()
                 .statusCode(200)
-                .body("data", equalTo(text))
-        ;
+                .body("data", equalTo(text));
     }
 
 
